@@ -1,5 +1,5 @@
 # Nginx + SQLite + API Node.js (Docker Compose Stack)
-
+[link video](https://youtu.be/NGtDsWW5qLY)
 ## 📖 Introdução
 Este projeto implementa uma stack mínima em **Ubuntu Server** (sem GUI) com:
 
