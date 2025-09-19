@@ -8,6 +8,7 @@
 | Levy Nascimento Junior | RM98655 |
 | Rafael Autieri dos Anjos | RM550885 |
 | Rafael Carvalho Mattos | RM99874 |
+| Vinicius Santos Yamashita de Farias | rm550885 |
 
 ## 📖 Introdução
 Este projeto implementa uma stack mínima em **Ubuntu Server** (sem GUI) com:
