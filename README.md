@@ -1,5 +1,14 @@
 # Nginx + SQLite + API Node.js (Docker Compose Stack)
 [link video](https://youtu.be/NGtDsWW5qLY)
+
+### 👥 Integrantes da Equipe
+| Nome | RM |
+|------|-----|
+| Henrique Pontes Oliveira | RM98036 |
+| Levy Nascimento Junior | RM98655 |
+| Rafael Autieri dos Anjos | RM550885 |
+| Rafael Carvalho Mattos | RM99874 |
+
 ## 📖 Introdução
 Este projeto implementa uma stack mínima em **Ubuntu Server** (sem GUI) com:
 
