@@ -311,6 +311,14 @@ Adicionado no `crontab -e`:
 0 2 * * * /usr/bin/env bash -lc 'cd $HOME/os-stack && ./scripts/anonymize.sh >> $HOME/os-stack/scripts/anonymize.log 2>&1'
 ```
 
+Como o script usa docker, o jeito mais simples e seguro é agendar como root (assim não precisa mexer em grupos). Abra o crontab do root:
+```bash
+sudo crontab -e
+```
+Salva e sai. Confirma que o cron foi escrito:
+```bash
+sudo crontab -l
+```
 ---
 
 ## ✅ Conclusão
