@@ -1,0 +1,40 @@
+version: "3.9"
+
+services:
+  api:
+    build: ./api
+    container_name: os_api
+    environment:
+      - NODE_ENV=production
+      - DB_PATH=/data/ivi.db
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./db:/data
+    depends_on:
+      - sqlite
+    restart: unless-stopped
+
+  nginx:
+    image: nginx:stable-alpine
+    container_name: os_nginx
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    ports:
+      - "80:80"
+    depends_on:
+      - api
+    restart: unless-stopped
+
+  sqlite:
+    image: alpine:3.20
+    container_name: os_sqlite
+    entrypoint: ["/bin/sh","-c"]
+    command: >
+      "apk add --no-cache sqlite sqlite-libs &&
+       echo 'SQLite util pronto; mantendo container em sleep.' &&
+       tail -f /dev/null"
+    volumes:
+      - ./db:/data
+      - ./scripts:/scripts
+    restart: unless-stopped
