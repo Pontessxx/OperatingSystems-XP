@@ -1,16 +1,16 @@
-version: "3.9"
-
 services:
   api:
     build: ./api
     container_name: os_api
     environment:
       - NODE_ENV=production
-      - DB_PATH=/data/ivi.db
+      - DB_PATH=/db/ivi.db
+      - LOG_DIR=/var/log/xp        # <- ADD
     ports:
       - "3000:3000"
     volumes:
-      - ./db:/data
+      - ./db:/db
+      - /var/log/xp:/var/log/xp    # <- ADD
     depends_on:
       - sqlite
     restart: unless-stopped
@@ -31,10 +31,11 @@ services:
     container_name: os_sqlite
     entrypoint: ["/bin/sh","-c"]
     command: >
-      "apk add --no-cache sqlite sqlite-libs &&
-       echo 'SQLite util pronto; mantendo container em sleep.' &&
-       tail -f /dev/null"
+      apk add --no-cache sqlite sqlite-libs &&
+      echo 'SQLite util pronto; mantendo container em sleep.' &&
+      tail -f /dev/null
     volumes:
-      - ./db:/data
+      - ./db:/db
       - ./scripts:/scripts
+      - /var/log/xp:/var/log/xp      # <- ADD (pro script logar no mesmo diretório)
     restart: unless-stopped
